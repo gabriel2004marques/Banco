@@ -1,0 +1,145 @@
+<html>
+
+     <head>
+
+        <title>Banco</title>
+        <link rel = "stylesheet" href = "styles2.css">
+
+     </head>
+
+     <body>
+
+        <script> 
+            
+            var saldo = 100000;
+            
+            function senha_gg() {
+
+                var senha = parseFloat(prompt("Informe sua senha :"));
+
+            if(senha === 1234) {
+                alert("Seja bem vindo");
+                nome();
+            } else if (senha !== 1234) {
+                alert("Senha incorreta");
+                senha_gg();
+            }
+            }
+        
+            function nome () {
+
+            var nome = prompt("Olá ! Qual é o seu nome ?");
+
+            alert("Olá "+nome+" ! Seja bem vindo !")
+            inicio();
+            }
+
+            function inicio() {
+
+            var escolha = parseFloat(prompt("Como poso ajudá-lo ? 1.) Saldo  2.) Extrato  3.) Saque  4.) Depósito  5.) Transferência  6.) Sair"))
+
+            if(escolha === 1) {
+                ver_saldo();
+            } else if(escolha === 4) {
+                fazer_deposito();
+            } else if(escolha === 3) {
+                fazer_saque();
+            } else if(escolha === 5) {
+                fazer_transferencia();
+            } else if(escolha === 2) {
+                ver_extratos();
+            } 
+            else if (escolha === 6) {
+                sair_da_página();
+            } else {
+                ERRO ();
+            }
+
+            function ver_saldo() {
+                alert("O seu saldo é de R$"+saldo+" reais.")
+                inicio();
+            }
+
+            function fazer_deposito() {
+                var deposito = parseFloat(prompt("Qual o valor do depósito que você gostaria de fazer ?"))
+                if(isNaN(deposito) || deposito === '') {
+                    alert("Por favor utilize apenas números");
+                    fazer_deposito();
+                } else if(deposito <= 0) {
+                    alert("Operação não autorizada")
+                    inicio();
+                } else {
+                    saldo = saldo + deposito;
+                    ver_saldo();
+                }
+            }
+
+            function fazer_saque() {
+                    var saque = parseFloat(prompt("Por favor , informe o valor de quanto deseja sacar :"))
+                    if(isNaN(saque) || saque === '') {
+                        alert("Por favor utilize apenas números");
+                        fazer_saque();
+                    } else if(saque <= 0) {
+                        alert("Operação não autorizada")
+                        inicio();
+                    } else {
+                        saldo -= saque;
+                        ver_saldo();
+                    }
+                }
+
+            function fazer_transferencia() {
+                var transferencia = parseFloat(prompt("Digite o número da conta que deseja fazer uma transferencia :"))
+                var valorTransferencia = parseFloat(prompt("Digite o valor da transferencia :"))
+                if(isNaN(transferencia) || transferencia === '') {
+                    alert("Por favor utilize apenas números");
+                    fazer_transferencia();
+                } else if(transferencia <= 0) {
+                    alert("Operação não autorizada")
+                    inicio();
+                }
+                if(isNaN(valorTransferencia) || valorTransferencia === '') {
+                    alert("Por favor utilize apenas números")
+                    fazer_transferencia();
+                } else if(valorTransferencia <= 0) {
+                    alert("Operação não autorizada")
+                    inicio();
+                } else {
+                    saldo -= valorTransferencia;
+                    alert("Transferencia realizada com sucesso !")
+                    ver_saldo();
+                }
+            }
+
+            function ver_extratos() {
+                alert("Nos ultimos 30 dias você :")
+                alert("Comprou um carro no valor de R$ 400000 reais na FIAT concensonarias")
+                alert("Comprou uma Playstation5 no valor de R$ 5000 reais na loja digital do Mercado Livre")
+                alert("Comprou um bolo-de-cenoura-com-cobertura-de-chocolate no valor de R$ 60,50 reais na padaria Pães Caseiros e Confeitaria")
+                alert("Comprou o jogo NBA2K22 no valor de R$ 150 reais na loja digital PlaystationNetwork")
+                inicio();
+            }
+
+            function ERRO () {
+                    alert("Por favor informe um número de 1 a 6")
+                    inicio();
+                }
+
+            function sair_da_página () {
+                    var confirma = confirm("Você realmente deseja sair ?")
+                    if(confirma) {
+                        alert("Obrigado por acessar nossos serviços ! \nEspero ter ajudado!")
+                        window.close();
+                    } else {
+                        inicio();
+                    }
+                }
+            }
+
+            senha_gg();
+
+        </script>
+
+    </body>
+
+</html>
