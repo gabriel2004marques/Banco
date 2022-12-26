@@ -82,6 +82,9 @@
                     } else if(saque <= 0) {
                         alert("Operação não autorizada")
                         inicio();
+                    } else if(saque > saldo) {
+                         alert("Operação não autorizada")
+                         inicio();
                     } else {
                         saldo -= saque;
                         ver_saldo();
