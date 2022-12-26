@@ -107,6 +107,9 @@
                 } else if(valorTransferencia <= 0) {
                     alert("Operação não autorizada")
                     inicio();
+                } else if (valorTransferencia > saldo) {
+                    alert("Operação não realizada");
+                    inicio();
                 } else {
                     saldo -= valorTransferencia;
                     alert("Transferencia realizada com sucesso !")
